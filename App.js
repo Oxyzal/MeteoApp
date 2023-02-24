@@ -8,11 +8,11 @@ import {KEY} from '@env';
 const  App = () => {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState();
 
 const api = { 
   key: KEY,
-  url: 'https://api.openweathermap.org/data/3.0/'
+  url: 'https://api.openweathermap.org/data/2.5/'
 }
   
 
@@ -21,11 +21,13 @@ const api = {
     setInput('');
     axios({
       method:'GET',
-      url:`https://api.openweathermap.org/data/3.0/weather?q=${input}$units=metric$appid=${api.key}`,
+      url:`https://api.openweathermap.org/data/2.5/weather?q=${input}&units=metric&appid=${api.key}`,
     })
     .then(res=>{
-      
+      setData(res.data);
+      console.log(res.data)
     })
+    .finally(() => setLoading(false))
   }, [api.key , input]);
   
   return (
@@ -41,9 +43,15 @@ const api = {
         </View>
         {loading && (
           <View>
-            <ActivityIndicator></ActivityIndicator>
+            <ActivityIndicator />
           </View>
-        )};
+        )}
+
+        {data && (
+          <View>
+            <Text style={styles.city}>{`${data?.name} ${data?.sys?.country}`}</Text>
+          </View>
+        )}
       </ImageBackground>
     </View>
   )
@@ -61,6 +69,10 @@ const styles = StyleSheet.create({
   textInput:{
     borderBottomWidth:3,
     backgroundColor:'#fff',
+  },
+  city:{
+    color:'#fff',
+    fontSize:40,
   }
 });
 
