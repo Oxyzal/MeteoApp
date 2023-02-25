@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ImageBackground,TextInput } from 'react-native';
 import axios from 'axios';
 import { useCallback, useState } from 'react';
-import { ActivityIndicator } from 'react-native-web';
+import { ActivityIndicator } from 'react-native';
 import {KEY} from '@env';
 
 const  App = () => {
@@ -16,7 +16,7 @@ const api = {
 }
   
 
-  const fetchData = useCallback(() => {
+  const FetchData = useCallback(() => {
     setLoading(true);
     setInput('');
     axios({
@@ -38,12 +38,12 @@ const api = {
             style={styles.textInput} 
             onChangeText={text => setInput(text)}
             value={input}
-            onSubmitEditing={fetchData}
+            onSubmitEditing={FetchData}
           />
         </View>
         {loading && (
           <View>
-            <ActivityIndicator />
+            <ActivityIndicator size={'large'} />
           </View>
         )}
 
