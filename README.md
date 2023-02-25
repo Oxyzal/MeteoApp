@@ -4,9 +4,9 @@
 The goal of this project is to create a simple weather app that displays the current weather for a given location.
 
 ## Technologies Used
-- React Native
-- Axios
-- OpenWeatherMap API
+- [React Native](https://reactnative.dev/)
+- [Axios](https://axios-http.com/fr/docs/intro)
+- [OpenWeatherMap API](https://openweathermap.org/)
 
 ## Features
 - Enter a city name to get the current weather data
