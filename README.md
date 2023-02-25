@@ -1,7 +1,7 @@
 # Weather App
 
 ## Introduction
-The goal of this project is to create a simple weather app that displays the current weather and 5-day forecast for a given location. The user will be able to enter a location and the app will display the current weather conditions.
+The goal of this project is to create a simple weather app that displays the current weather for a given location.
 
 ## Technologies Used
 - React Native
