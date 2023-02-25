@@ -50,6 +50,9 @@ const api = {
         {data && (
           <View>
             <Text style={styles.city}>{`${data?.name} ${data?.sys?.country}`}</Text>
+            <Text style={styles.date}>{new Date().toLocaleString()}</Text>
+            <Text style={styles.temperature}> {`${Math.round(data?.main?.temp,)}C`} </Text>
+            <Text style={styles.minMax}> {` Min ${Math.round(data?.main?.temp_min,)} C / Max ${Math.round(data?.main?.temp_max,)} C`} </Text>
           </View>
         )}
       </ImageBackground>
@@ -61,7 +64,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-
   image:{
     flex:1,
     flexDirection:'column',
@@ -69,13 +71,42 @@ const styles = StyleSheet.create({
   textInput:{
     borderBottomWidth:3,
     backgroundColor:'#fff',
+    alignSelf: 'stretch',
+    marginHorizontal: 20,
+    marginBottom: 20,
+    marginTop: 80,
+    fontSize: 20,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    opacity: 0.5,
   },
   city:{
     color:'#fff',
     fontSize:40,
-  }
+    textAlign: 'center',
+    marginTop: 50,
+    fontWeight: 'bold',
+  },
+  date:{
+    color:'#fff',
+    fontSize:16,
+    textAlign: 'center',
+    marginTop: 10,
+  },
+  temperature:{
+    color: '#fff',
+    fontSize: 60,
+    textAlign: 'center',
+    marginTop: 30,
+    fontWeight: 'bold',
+  },
+  minMax:{
+    color: '#fff',
+    fontSize: 20,
+    textAlign: 'center',
+    marginTop: 10,
+  },
 });
-
 
 
 export default App;
